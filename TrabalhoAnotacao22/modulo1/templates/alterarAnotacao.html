@@ -1,0 +1,30 @@
+{% extends "default.html" %}
+{% block conteudo %}
+{% if error %}
+{{error}}
+{% endif %}
+
+<form action="http://localhost:5000/modulo1/acao" id="anotacao" method="post" enctype="multipart/form-data">
+    Titulo: </span> <input type="text" name="titulo" value="{{anotacao.titulo}}"> <br>
+    Descrição: </span><input type="text" name="descricao" value="{{anotacao.descricao}}"><br>
+
+    <!--Imagem: <input type="file" name="file"/><br>-->
+    <!--{%for imagem in anotacao.imagem.all()%}-->
+    <!--{% if(imagem.endereco != None) %}-->
+    <!--<a><span><img src="../static/imagens/{{imagem.endereco}}" width="150" height="100"-->
+                  <!--alt="image"/></span></a><br>-->
+    <!--<input type="hidden" name="idhiddenimagem" value="{{imagem.id}}">-->
+    <!--<input type="submit" name="funcao" value="Deletar Imagem">-->
+    <!--<br>-->
+    <!--{% endif %}-->
+    <!--{%endfor%}-->
+
+    Date: {{anotacao.data}}
+    <br>
+
+    <input type="hidden" name="alteracao" value="ok">
+    <input type="hidden" name="idhidden" value={{anotacao.id}}>
+
+    <td><input type="submit" name="funcao" value="Alterar"></td>
+</form>
+{% endblock %}

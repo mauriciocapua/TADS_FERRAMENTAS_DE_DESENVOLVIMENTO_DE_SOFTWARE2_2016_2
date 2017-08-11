@@ -1,0 +1,9 @@
+{% extends "default_listagem.html" %}
+
+{% block button %}
+<td><input type="submit" name="funcao" value="Deletar Permanentemente"></td>
+<td><input type="submit" name="funcao" value="Restaurar"></td>
+{% if mensagem %}
+{{mensagem}}
+{% endif %}
+{% endblock %}

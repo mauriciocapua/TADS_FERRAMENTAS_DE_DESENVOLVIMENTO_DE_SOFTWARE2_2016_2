@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title> Google Keep Pobre Edition </title>
+</head>
+<body>
+<h1>Google Keep Pobre Edition</h1>
+
+{% if error %}
+{{error}}
+{% endif %}
+
+<form action="http://localhost:5000/session" id="formulario" method="post">
+    <span class="formulario">Nome: </span> <input type="text" name="username"/> <br>
+    <span class="formulario">Senha: </span><input type="PASSWORD" name="password"/>
+    <br>
+    <input type="submit"/>
+</form>
+
+</body>
+</html>

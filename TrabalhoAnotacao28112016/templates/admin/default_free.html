@@ -1,0 +1,37 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+
+
+<hr>
+Bem vindo convidado a {{tipo}} de anotações
+<table border="1" style="background-color:aliceblue">
+    <tr>
+        <!--<td>id</td>-->
+        <td>TEXTO</td>
+        <td>DESCRICAO</td>
+        <td>DATA</td>
+        <td>IMAGEM</td>
+    </tr>
+    {% for anotacao in lista %}
+    <tr>
+        <td>{{anotacao.titulo}}</td>
+        <td>{{anotacao.descricao}}</td>
+        <td>{{anotacao.data}}</td>
+        <td>
+
+            {%for imagem in anotacao.imagem%}
+            {% if(imagem.endereco != None) %}
+
+            <a><span><img src="../../static/imagens/{{imagem.endereco}}" width="150" height="100"
+                          alt="image"/></span></a><br>
+            {%endif%}
+            {%endfor%}
+
+        </td>
+
+    </tr>
+    {% endfor %}
+</table>
+</hr>
+
+{% endblock %}

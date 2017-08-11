@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title> Google Keep Pobre Edition </title>
+</head>
+<body>
+<h1>Google Keep Pobre Edition</h1>
+<ul>
+
+    <li>
+        <a href="login"> Login </a>
+    </li>
+    <li>
+        <a href="listarfree"> Listar anotações </a>
+    </li>
+
+    <li>
+        <a href="lixeirafree"> Lixeira </a>
+    </li>
+
+</ul>
+<hr>
+Bem vindo convidado a {{tipo}} de anotações
+<table border="1" style="background-color:aliceblue">
+    <tr>
+        <!--<td>id</td>-->
+        <td>TEXTO</td>
+        <td>DESCRICAO</td>
+        <td>DATA</td>
+        <td>IMAGEM</td>
+    </tr>
+    {% for anotacao in lista %}
+    <tr>
+        <td>{{anotacao.titulo}}</td>
+        <td>{{anotacao.descricao}}</td>
+        <td>{{anotacao.data}}</td>
+        <td>
+
+            {%for imagem in anotacao.imagem%}
+            {% if(imagem.endereco != None) %}
+
+            <a><span><img src="../static/imagens/{{imagem.endereco}}" width="150" height="100"
+                          alt="image"/></span></a><br>
+            {%endif%}
+            {%endfor%}
+
+        </td>
+
+    </tr>
+    {% endfor %}
+</table>
+<!--{% block conteudo %}-->
+
+<!--{% endblock %}-->
+<hr>
+
+Direitos do igor...revogados
+</body>
+</html>

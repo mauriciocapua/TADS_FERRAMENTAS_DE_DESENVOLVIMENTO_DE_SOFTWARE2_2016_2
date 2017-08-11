@@ -1,0 +1,37 @@
+{% extends "default.html" %}
+
+{% block conteudo %}
+
+{% if name %}
+Bem vindo - {{name}} - a {{tipo}} de anotações
+<table border="1" style="background-color:aliceblue">
+    <tr>
+        <!--<td>id</td>-->
+        <td>Nome usuario</td>
+    </tr>
+    {% for usuario in lista %}
+    <form action="http://localhost:5000/modulo1/acao" method="post">
+
+        <tr>
+            <!--<td>{{anotacao.id}}</td>-->
+            <td>{{usuario.nome}}</td>
+
+            <input type="hidden" name="idhiddenusuario" value="{{usuario.id}}">
+            <input type="hidden" name="idhiddenanotacao" value="{{anotacao.id}}">
+            <input type="hidden" name="alteracao" value="ok">
+
+            <td><input type="submit" name="funcao" value="{{butao}}"></td>
+
+
+            </td>
+
+        </tr>
+
+    </form>
+    {% endfor %}
+</table>
+
+{% else %}
+Nao veio parametro
+{% endif %}
+{% endblock %}

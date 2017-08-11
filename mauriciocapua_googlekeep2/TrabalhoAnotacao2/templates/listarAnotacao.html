@@ -1,0 +1,41 @@
+{% extends "default.html" %}
+
+{% block conteudo %}
+
+
+{% if name %}
+Bem vindo a lista de anotações: {{name}}
+<table border="1" style="background-color:aliceblue">
+    <tr>
+        <!--<td>id</td>-->
+        <td>TEXTO</td>
+        <td>DESCRICAO</td>
+        <td>DATA</td>
+    </tr>
+    {% for anotacao in lista %}
+
+    <form action="http://localhost:5000/acao" method="post">
+        <!--<td> {{anotacao.id}}</td>-->
+        <tr>
+            <td>{{anotacao.titulo}}</td>
+            <td>{{anotacao.descricao}}</td>
+            <td>{{anotacao.data}}</td>
+            <td><input type="radio" name="button" value={{anotacao.id}}></td>
+        </tr>
+        {% endfor %}
+
+        <td><input type="submit" name="funcao" value="deletar"></td>
+        <td><input type="submit" name="funcao" value="alterar"></td>
+
+    </form>
+
+
+</table>
+{% else %}
+Nao veio parametro
+{% endif %}
+{% if mensagem %}
+{{mensagem}}
+{% endif %}
+
+{% endblock %}

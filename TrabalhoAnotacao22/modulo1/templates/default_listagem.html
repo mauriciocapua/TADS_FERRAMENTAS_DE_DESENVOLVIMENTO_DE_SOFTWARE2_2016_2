@@ -1,0 +1,70 @@
+{% extends "default.html" %}
+
+{% block conteudo %}
+
+{% if name %}
+Bem vindo - {{name}} - a {{tipo}} de anotações
+{% if lista[0] %}
+<table border="1" style="background-color:aliceblue">
+    <tr>
+        <!--<td>id</td>-->
+        <td>TEXTO</td>
+        <td>DESCRICAO</td>
+        <td>DATA</td>
+        <td>IMAGEM</td>
+    </tr>
+    {% for anotacao in lista %}
+    <form action="http://localhost:5000/modulo1/acao" method="post">
+
+        <tr>
+            <!--<td>{{anotacao.id}}</td>-->
+            <td>{{anotacao.titulo}}</td>
+            <td>{{anotacao.descricao}}</td>
+            <td>{{anotacao.data}}</td>
+
+
+            <!--{% if(anotacao.imagem != None) %}-->
+            <!--&lt;!&ndash;<div class="hover_img" src="../static/image.gif">&ndash;&gt;-->
+            <!--<a><span><img src="../static/imagens/{{anotacao.imagem}}" width="150" height="100"-->
+            <!--alt="image"/></span></a>-->
+            <!--<input type="hidden" name="imagemhidden" value="{{anotacao.imagem.endereco}}">-->
+            <!--{% endif %}-->
+            <td>
+                {%for imagem in anotacao.imagem%}
+
+                {% if(imagem.endereco != None) %}
+
+                <img src="../static/imagens/{{imagem.endereco}}" width="150" height="100"
+                     alt="image"/><br>
+                <a href=http://localhost:5000/modulo1/deletaimagem?idhiddenimagem={{imagem.id}}>Deletar Imagem</a>
+                </br>
+                {% endif %}
+
+
+                {%endfor%}
+            </td>
+
+            {% block button %}
+
+            {% endblock %}
+
+
+            <input type="hidden" name="idhidden" value="{{anotacao.id}}">
+            <input type="hidden" name="titulohidden" value="{{anotacao.titulo}}">
+            <input type="hidden" name="descricaohidden" value="{{anotacao.descricao}}">
+            <input type="hidden" name="datahidden" value="{{anotacao.data}}">
+            <input type="hidden" name="alteracao" value="null">
+            <!--<td><input type="radio" name="button" value={{anotacao.id}}></td>-->
+        </tr>
+
+    </form>
+    {% endfor %}
+</table>
+{% else %}
+<hr><h1>Não há anotacões registradas</h1></hr>
+{% endif %}
+
+{% else %}
+Nao veio parametro name
+{% endif %}
+{% endblock %}
